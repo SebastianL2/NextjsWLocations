@@ -4,7 +4,7 @@ export const getZipcode = async (
   zipcode: string
 ): Promise<ResponseZipCode | any> => {
   try {
-    const res = await fetch(`http://127.0.0.1:8000/zipcode/${zipcode}`);
+    const res = await fetch(`https://global-locations.vercel.app/zipcode/${zipcode}`);
     const data: ResponseZipCode = await res.json();
     return data;
   } catch (error: Error | any) {
