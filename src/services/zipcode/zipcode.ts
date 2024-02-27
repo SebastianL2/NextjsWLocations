@@ -3,10 +3,10 @@ import { API_URL } from "../../../utils/constans";
 
 export const getZipcode = async (
   zipcode: string
-): Promise<ResponseZipCode | any> => {
+): Promise<string  | any> => {
   try {
     const res = await fetch(`${API_URL}/zipcode/${zipcode}`);
-    const data: ResponseZipCode = await res.json();
+    const data= await res.json();
     return data;
   } catch (error: Error | any) {
     return error.message;
