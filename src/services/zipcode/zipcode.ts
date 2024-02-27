@@ -16,7 +16,7 @@ export const getZipcodeByFile = async (file: File) => {
   try {
     const formData = new FormData();
     formData.append("file", file);
-    const res = await fetch(`http://127.0.0.1:8000/zipcode/upload_file`, {
+    const res = await fetch(`https://global-locations.vercel.app/upload_file`, {
       method: "POST",
       body: formData,
     });
