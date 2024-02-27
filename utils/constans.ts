@@ -1,1 +1,1 @@
-export const API_URL = "https://globallocations.onrender.com"
+export const API_URL = "https://global-locations.vercel.app"
