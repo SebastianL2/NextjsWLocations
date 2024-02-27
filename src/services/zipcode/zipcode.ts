@@ -4,6 +4,7 @@ import { API_URL } from "../../../utils/constans";
 export const getZipcode = async (
   zipcode: string
 ): Promise<string  | any> => {
+  
   try {
     const res = await fetch(`${API_URL}/zipcode/${zipcode}`);
     const data= await res.json();
@@ -13,7 +14,7 @@ export const getZipcode = async (
   }
 };
 
-export const getZipcodeByFile = async (file: File) => {
+export const getZipcodeByFile = async (file: File): Promise<any> => {
   try {
     const formData = new FormData();
     formData.append("file", file);
@@ -21,9 +22,11 @@ export const getZipcodeByFile = async (file: File) => {
       method: "POST",
       body: formData,
     });
-    const data = await res.json();
-    return data;
-  } catch (error: Error | any) {
-    return error.message;
+    if (!res.ok) {
+      throw new Error(`Error al enviar el archivo: ${res.statusText}`);
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(`Error en la solicitud: ${error}`);
   }
 };
